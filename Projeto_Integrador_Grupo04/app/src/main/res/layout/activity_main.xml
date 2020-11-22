@@ -9,16 +9,21 @@
     <fragment
         android:id="@+id/nav_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="421dp"
-        android:layout_height="690dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:paddingTop="?attr/actionBarSize"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/mobile_navigation"
-        tools:layout_editor_absoluteX="-5dp" />
+        app:layout_constraintBottom_toTopOf="@id/nav_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/mobile_navigation" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
+        app:itemIconSize="25sp"
+        app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

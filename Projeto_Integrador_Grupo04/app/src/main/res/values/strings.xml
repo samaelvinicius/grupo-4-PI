@@ -14,4 +14,5 @@
     <string name="title_airing">Em exibição</string>
     <string name="title_popular">Populares</string>
     <string name="title_upcoming">Em breve</string>
+    <string name="tab_movies_series">Filmes e Séries</string>
 </resources>
