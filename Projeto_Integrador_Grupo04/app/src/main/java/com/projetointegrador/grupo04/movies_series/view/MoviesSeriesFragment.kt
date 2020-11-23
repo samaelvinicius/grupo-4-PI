@@ -113,7 +113,7 @@ class MoviesSeriesFragment : Fragment() {
     }
 
     private fun setUserOptions() {
-        _view.findViewById<ImageView>(R.id.imgSeriesDetailsBack).setOnClickListener {
+        _view.findViewById<ImageView>(R.id.iconUserTab).setOnClickListener {
             Toast.makeText(context,"OPA OLHA AE",Toast.LENGTH_SHORT).show()
         }
     }
