@@ -7,4 +7,16 @@
     <dimen name="dim_09_dp">9dp</dimen>
     <dimen name="dim_21_sp">21sp</dimen>
     <dimen name="dim_24_sp">24sp</dimen>
+    <dimen name="dim_120_dp">120dp</dimen>
+    <dimen name="dim_200_dp">200dp</dimen>
+    <dimen name="dim_15_dp">15dp</dimen>
+    <dimen name="dim_5_dp">5dp</dimen>
+    <dimen name="dim_100_dp">100dp</dimen>
+    <dimen name="dim_145_dp">145dp</dimen>
+    <dimen name="dim_35_dp">35dp</dimen>
+    <dimen name="dim_105_dp">105dp</dimen>
+    <dimen name="dim_61_dp">61dp</dimen>
+    <dimen name="dim_48_dp">48dp</dimen>
+    <dimen name="dim_0_dp">0dp</dimen>
+    <dimen name="dim_220_dp">220dp</dimen>
 </resources>

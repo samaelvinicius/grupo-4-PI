@@ -1,7 +1,10 @@
 package com.projetointegrador.grupo04.movies_series.model
 
+import com.google.gson.annotations.SerializedName
+
 data class MovieModel(
-    val name: String,
-    val score: Int,
-    val image: Int
+    @SerializedName("id") val id: Int,
+    @SerializedName("title") val title: String,
+    @SerializedName("vote_average") val voteAverage: Double,
+    @SerializedName("poster_path") val posterPath: String
 )

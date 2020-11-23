@@ -16,38 +16,12 @@ import com.projetointegrador.grupo04.movies_series.view.MovieListAdapter
 import com.projetointegrador.grupo04.movies_series.viewmodel.MovieListViewModel
 
 class PeopleFragment : Fragment() {
-    lateinit var movieListView: View
-    lateinit var movieListViewModel: MovieListViewModel
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        movieListView = inflater.inflate(R.layout.fragment_people, container, false)
-        movieListViewModel = ViewModelProvider(this,
-            MovieListViewModel.ListRestaurantListViewModelFactory(MovieRepository())
-        ).get(MovieListViewModel::class.java)
+        return inflater.inflate(R.layout.fragment_people, container, false)
 
-        movieListViewModel.movieList.observe(this, Observer {
-            createTrendingList(it)
-        })
-
-        movieListViewModel.getList()
-        return movieListView
-    }
-
-    fun createTrendingList(restaurant: List<MovieModel>) {
-        val recyclerView = movieListView.findViewById<RecyclerView>(R.id.rvMediaTrending2)
-        val manager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-
-        val customAdapter = MovieListAdapter(restaurant) {
-        }
-
-        recyclerView.apply {
-            setHasFixedSize(true)
-            layoutManager = manager
-            adapter = customAdapter
-        }
     }
 }

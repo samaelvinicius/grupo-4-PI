@@ -10,15 +10,4 @@
         android:name="com.projetointegrador.grupo04.movies_series.view.MoviesSeriesFragment"
         tools:layout="@layout/fragment_series_movies" />
 
-    <fragment
-        android:id="@+id/navigation_people"
-        android:name="com.projetointegrador.grupo04.people.view.PeopleFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_people" />
-
-    <fragment
-        android:id="@+id/navigation_explore"
-        android:name="com.projetointegrador.grupo04.explore.view.ExploreFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_explore" />
 </navigation>

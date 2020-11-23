@@ -7,15 +7,19 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.projetointegrador.grupo04.R
 import com.projetointegrador.grupo04.movies_series.model.MovieModel
+import com.squareup.picasso.Picasso
 
 class MovieListViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
-    private val name = view.findViewById<TextView>(R.id.tvMediaName)
-    private val score = view.findViewById<TextView>(R.id.tvMediaScore)
-    private val image = view.findViewById<ImageView>(R.id.ivPoster)
+    private val title = view.findViewById<TextView>(R.id.tvMediaName)
+    private val voteAverage = view.findViewById<TextView>(R.id.tvMediaScore)
+    private val poster = view.findViewById<ImageView>(R.id.ivPoster)
 
     fun bind(movie: MovieModel){
-        name.text = movie.name
-        score.text = "${movie.score}%"
-        image.setImageDrawable(ContextCompat.getDrawable(view.context, movie.image))
+        title.text = movie.title
+        voteAverage.text = movie.voteAverage.toString()
+
+        Picasso.get()
+            .load("https://image.tmdb.org/t/p/w342" + movie.posterPath)
+            .into(poster)
     }
 }

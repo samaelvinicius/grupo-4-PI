@@ -1,82 +1,17 @@
 package com.projetointegrador.grupo04.movies_series.repository
 
 import com.projetointegrador.grupo04.R
+import com.projetointegrador.grupo04.explore.repository.PersonagemEndpoint
 import com.projetointegrador.grupo04.movies_series.model.MovieModel
 
 class MovieRepository {
-    var moviesListed = mutableListOf<MovieModel>(
-        MovieModel(
-            "FILME",
-            90,
-            R.drawable.cover_django
-        ),
-        MovieModel(
-            "FILME",
-            90,
-            R.drawable.cover_django
-        ),
-        MovieModel(
-            "FILME",
-            90,
-            R.drawable.cover_django
-        ),
-        MovieModel(
-            "FILME",
-            90,
-            R.drawable.cover_django
-        ),
-        MovieModel(
-            "FILME",
-            90,
-            R.drawable.cover_django
-        ),
-        MovieModel(
-            "FILME",
-            90,
-            R.drawable.cover_django
-        ),
-        MovieModel(
-            "FILME",
-            90,
-            R.drawable.cover_django
-        ),
-        MovieModel(
-            "FILME",
-            90,
-            R.drawable.cover_django
-        ),
-        MovieModel(
-            "FILME",
-            90,
-            R.drawable.cover_django
-        ),
-        MovieModel(
-            "FILME",
-            90,
-            R.drawable.cover_django
-        ),
-        MovieModel(
-            "FILME",
-            90,
-            R.drawable.cover_django
-        ),
-        MovieModel(
-            "FILME",
-            90,
-            R.drawable.cover_django
-        ),
-        MovieModel(
-            "FILME",
-            90,
-            R.drawable.cover_django
-        )
-    )
+    private val client = IMoviesEndpoint.endpoint
 
-    fun getMovieList(): MutableList<MovieModel> {
-        return moviesListed
-    }
+    suspend fun getPopularMovies() = client.getPopularMovies()
+    suspend fun getTrendingMovies() = client.getTrendingMovies()
+    suspend fun getLatestMovies() = client.getLatestMovies()
+    suspend fun getUpcomingMovies() = client.getUpcomingMovies()
+    suspend fun getTopRatedMovies() = client.getTopRatedMovies()
+    suspend fun getNowPlayingMovies() = client.getNowPlayingMovies()
 
-    fun getList(callback: (movie: List<MovieModel>) -> Unit) {
-        callback.invoke(getMovieList())
-    }
 }

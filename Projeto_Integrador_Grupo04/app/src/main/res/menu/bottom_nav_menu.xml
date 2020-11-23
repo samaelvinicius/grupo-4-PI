@@ -9,7 +9,7 @@
     <item
         android:id="@+id/navigation_networks"
         android:icon="@drawable/ic_baseline_tv_24"
-        android:title="@string/title_explore" />
+        android:title="@string/title_networks" />
 
     <item
         android:id="@+id/navigation_people"
