@@ -30,8 +30,8 @@ class TelaInicialActivity : AppCompatActivity()
             Handler(Looper.getMainLooper()).postDelayed({setImageResource(R.drawable.carga02)}, 800)
             Handler(Looper.getMainLooper()).postDelayed({setImageResource(R.drawable.carga03)}, 1500)
             Handler(Looper.getMainLooper()).postDelayed({setImageResource(R.drawable.carga04)}, 2300)
-            Handler(Looper.getMainLooper()).postDelayed({setImageResource(R.drawable.carga05)}, 3000)
-            Handler(Looper.getMainLooper()).postDelayed({setImageResource(R.drawable.carga06)}, 3900)
+            Handler(Looper.getMainLooper()).postDelayed({setImageResource(R.drawable.carga05)}, 3200)
+            Handler(Looper.getMainLooper()).postDelayed({setImageResource(R.drawable.carga06)}, 4500)
 
         }
 

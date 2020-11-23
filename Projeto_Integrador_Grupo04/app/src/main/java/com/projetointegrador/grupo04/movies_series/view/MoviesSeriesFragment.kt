@@ -14,6 +14,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.navigation.NavigationView
 import com.projetointegrador.grupo04.R
 import com.projetointegrador.grupo04.explore.model.PersonagemModel
 import com.projetointegrador.grupo04.explore.repository.PersonagemRepository
@@ -114,7 +115,9 @@ class MoviesSeriesFragment : Fragment() {
 
     private fun setUserOptions() {
         _view.findViewById<ImageView>(R.id.iconUserTab).setOnClickListener {
-            Toast.makeText(context,"OPA OLHA AE",Toast.LENGTH_SHORT).show()
+            Toast.makeText(context,"Tentei abrir o menu aqui, mas não consegui achar a VIEW correta!",Toast.LENGTH_SHORT).show()
+            //O COMANDO É ESTE ABAIXO, MAS NAO CONSEGUI LOCALIZAR A VIEW
+            //findViewById<NavigationView>(R.id.navMenu).visibility = View.INVISIBLE
         }
     }
 }

@@ -17,4 +17,13 @@
     <string name="tab_movies_series">Filmes e Séries</string>
     <string name="title_networks">Emissoras</string>
     <string name="descricao_logo">Logotipo - Tela Inicial</string>
+    <string name="nav_header_desc">Icone - Foto usuário</string>
+    <string name="nav_header_title">Nome da aplicação</string>
+    <string name="nav_header_subtitle">grupo04@projetointegrador.com</string>
+    <string name="criar_conta">Criar uma conta</string>
+    <string name="acessar_conta">Acessar minha conta</string>
+    <string name="acessar_facebook">Acessar com facebook</string>
+    <string name="acessar_google">Acessar com Google</string>
+    <string name="sobre">Sobre esta aplicação</string>
+    <string name="sair">Sair (logout)</string>
 </resources>
