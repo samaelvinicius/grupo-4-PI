@@ -19,4 +19,5 @@
     <dimen name="dim_48_dp">48dp</dimen>
     <dimen name="dim_0_dp">0dp</dimen>
     <dimen name="dim_220_dp">220dp</dimen>
+    <dimen name="dim_50_dp">50dp</dimen>
 </resources>

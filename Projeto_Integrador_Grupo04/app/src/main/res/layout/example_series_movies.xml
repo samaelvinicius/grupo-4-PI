@@ -29,6 +29,7 @@
             android:background="@drawable/shape_score"
             android:gravity="center"
             android:text="@string/media_score"
+            android:textColor="@color/color_black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,6 +39,7 @@
             android:layout_height="@dimen/dim_48_dp"
             android:gravity="top|center"
             android:text="@string/media_name"
+            android:textColor="@color/color_black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ivPoster" />
