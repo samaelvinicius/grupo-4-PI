@@ -16,4 +16,5 @@
     <string name="title_upcoming">Em breve</string>
     <string name="tab_movies_series">Filmes e Séries</string>
     <string name="title_networks">Emissoras</string>
+    <string name="descricao_logo">Logotipo - Tela Inicial</string>
 </resources>
