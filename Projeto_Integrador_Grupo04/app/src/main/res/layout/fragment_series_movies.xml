@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".moviesseries.view.MoviesSeriesFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="@dimen/dim_0_dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_white"
+            app:layout_scrollFlags="scroll|enterAlways">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/toolbarTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center|left"
+                    android:text="@string/title_series_movies"
+                    android:textColor="@color/color_black"
+                    android:textSize="@dimen/dim_24_sp"
+                    android:textStyle="bold"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:layout_editor_absoluteY="8dp" />
+
+                <ImageView
+                    android:id="@+id/iconUserTab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:src="@drawable/ic_baseline_dehaze_48"
+                    app:layout_anchor="@+id/appBarLayout"
+                    app:layout_anchorGravity="end|center"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvMediaTrending"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_trending"
+        android:textStyle="bold"
+        android:textColor="@color/color_black"
+        android:textSize="@dimen/dim_21_sp"
+        android:layout_marginStart="@dimen/dim_10_dp"
+        android:layout_marginTop="@dimen/dim_20_dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/rvMediaTrending"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMediaTrending"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_primary_op_50"
+        tools:listitem="@layout/example_series_movies"
+        app:layout_constraintBottom_toTopOf="@id/rvMediaTrending"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvMediaAiring"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_airing"
+        android:textStyle="bold"
+        android:textColor="@color/color_black"
+        android:textSize="@dimen/dim_21_sp"
+        android:layout_marginStart="@dimen/dim_10_dp"
+        android:layout_marginTop="@dimen/dim_35_dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rvMediaTrending"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMediaAiring"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/example_series_movies"
+        app:layout_constraintTop_toBottomOf="@id/tvMediaAiring"/>
+
+    <TextView
+        android:id="@+id/tvMediaPopular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_popular"
+        android:textStyle="bold"
+        android:textColor="@color/color_black"
+        android:textSize="@dimen/dim_21_sp"
+        android:layout_marginTop="@dimen/dim_35_dp"
+        android:layout_marginStart="@dimen/dim_10_dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rvMediaAiring"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMediaPopular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/example_series_movies"
+        app:layout_constraintTop_toBottomOf="@id/tvMediaPopular"/>
+
+        <TextView
+            android:id="@+id/tvMediaUpcoming"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_upcoming"
+            android:textStyle="bold"
+            android:textColor="@color/color_black"
+            android:textSize="@dimen/dim_21_sp"
+            android:layout_marginTop="@dimen/dim_35_dp"
+            android:layout_marginStart="@dimen/dim_10_dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rvMediaPopular"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvMediaUpcoming"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/example_series_movies"
+            app:layout_constraintTop_toBottomOf="@id/tvMediaUpcoming"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/toolbarBottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dim_5_dp"
+        android:background="@color/colorPrimary"
+        app:layout_anchor="@+id/appBarLayout"
+        app:layout_anchorGravity="bottom|center" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

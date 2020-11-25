@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/navNovoUsuario"
+            android:icon="@drawable/ic_baseline_person_add_24"
+            android:title="@string/criar_conta" />
+        <item
+            android:id="@+id/navLoginConta"
+            android:icon="@drawable/ic_baseline_account_box_24"
+            android:title="@string/acessar_conta" />
+        <item
+            android:id="@+id/navLoginFacebook"
+            android:icon="@drawable/ic_baseline_thumb_up_24"
+            android:title="@string/acessar_facebook" />
+        <item
+            android:id="@+id/navLoginGoogle"
+            android:icon="@drawable/ic_baseline_g_translate_24"
+            android:title="@string/acessar_google" />
+        <item
+            android:id="@+id/navSobre"
+            android:icon="@drawable/ic_baseline_local_movies_24"
+            android:title="@string/sobre" />
+        <item
+            android:id="@+id/navLogout"
+            android:icon="@drawable/ic_baseline_directions_walk_24"
+            android:title="@string/sair" />
+    </group>
+</menu>
