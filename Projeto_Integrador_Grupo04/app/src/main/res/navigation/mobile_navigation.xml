@@ -7,7 +7,17 @@
 
     <fragment
         android:id="@+id/navigation_series_movies"
-        android:name="com.projetointegrador.grupo04.movies_series.view.MoviesSeriesFragment"
-        tools:layout="@layout/fragment_series_movies" />
+        android:name="com.projetointegrador.grupo04.moviesseries.view.MoviesSeriesFragment"
+        tools:layout="@layout/fragment_series_movies">
+        <action
+            android:id="@+id/action_navigation_series_movies_to_movieDetailedFragment"
+            app:destination="@id/movieDetailedFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/movieDetailedFragment"
+        android:name="com.projetointegrador.grupo04.moviesseries.view.MovieDetailedFragment"
+        android:label="fragment_movie_detailed"
+        tools:layout="@layout/fragment_movie_detailed" />
 
 </navigation>

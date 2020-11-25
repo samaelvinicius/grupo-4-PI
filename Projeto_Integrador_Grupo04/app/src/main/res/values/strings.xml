@@ -26,4 +26,11 @@
     <string name="acessar_google">Acessar com Google</string>
     <string name="sobre">Sobre esta aplicação</string>
     <string name="sair">Sair (logout)</string>
+    <string name="detail_movie_casting">ELENCO</string>
+    <string name="detail_movie_title">TÍTULO</string>
+    <string name="detail_movie_director">DIREÇÃO</string>
+    <string name="detail_movie_genre">GÊNEROS</string>
+    <string name="detail_movie_overview">SINOPSE</string>
+    <string name="title_overview">Sinopse</string>
+    <string name="title_casting">Elenco</string>
 </resources>

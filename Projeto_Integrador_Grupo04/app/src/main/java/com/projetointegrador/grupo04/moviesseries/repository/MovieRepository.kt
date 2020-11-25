@@ -1,8 +1,4 @@
-package com.projetointegrador.grupo04.movies_series.repository
-
-import com.projetointegrador.grupo04.R
-import com.projetointegrador.grupo04.explore.repository.PersonagemEndpoint
-import com.projetointegrador.grupo04.movies_series.model.MovieModel
+package com.projetointegrador.grupo04.moviesseries.repository
 
 class MovieRepository {
     private val client = IMoviesEndpoint.endpoint
@@ -13,5 +9,6 @@ class MovieRepository {
     suspend fun getUpcomingMovies() = client.getUpcomingMovies()
     suspend fun getTopRatedMovies() = client.getTopRatedMovies()
     suspend fun getNowPlayingMovies() = client.getNowPlayingMovies()
+    suspend fun getMovieCast(movieId: Int?) = movieId?.let { client.getMovieCast(it) }
 
 }

@@ -1,10 +1,10 @@
-package com.projetointegrador.grupo04.movies_series.viewmodel
+package com.projetointegrador.grupo04.moviesseries.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.liveData
-import com.projetointegrador.grupo04.movies_series.model.MovieModel
-import com.projetointegrador.grupo04.movies_series.repository.MovieRepository
+import com.projetointegrador.grupo04.moviesseries.model.MovieModel
+import com.projetointegrador.grupo04.moviesseries.repository.MovieRepository
 import kotlinx.coroutines.Dispatchers
 
 class MovieListViewModel(private val repository: MovieRepository): ViewModel() {

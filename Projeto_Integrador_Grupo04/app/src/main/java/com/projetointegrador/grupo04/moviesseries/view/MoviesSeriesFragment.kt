@@ -1,4 +1,4 @@
-package com.projetointegrador.grupo04.movies_series.view
+package com.projetointegrador.grupo04.moviesseries.view
 
 import android.os.Bundle
 import android.view.*
@@ -6,26 +6,18 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import android.widget.Toast
 import androidx.core.os.bundleOf
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.observe
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.navigation.NavigationView
 import com.projetointegrador.grupo04.R
-import com.projetointegrador.grupo04.explore.model.PersonagemModel
-import com.projetointegrador.grupo04.explore.repository.PersonagemRepository
-import com.projetointegrador.grupo04.explore.view.ListaAdapter
-import com.projetointegrador.grupo04.explore.viewmodel.PersonagemViewModel
-import com.projetointegrador.grupo04.movies_series.model.MovieModel
-import com.projetointegrador.grupo04.movies_series.repository.MovieRepository
-import com.projetointegrador.grupo04.movies_series.viewmodel.MovieListViewModel
-import kotlinx.android.synthetic.main.activity_main.*
+import com.projetointegrador.grupo04.moviesseries.model.MovieModel
+import com.projetointegrador.grupo04.moviesseries.repository.MovieRepository
+import com.projetointegrador.grupo04.moviesseries.viewmodel.MovieListViewModel
 
 class MoviesSeriesFragment : Fragment() {
+
     lateinit var _viewModel: MovieListViewModel
     lateinit var _view: View
 
@@ -81,7 +73,13 @@ class MoviesSeriesFragment : Fragment() {
         _upcomingList = mutableListOf()
 
         //Adapters initialization
-        _nowPlayingListAdapter = MovieListAdapter(_nowPlayingList){}
+        _nowPlayingListAdapter = MovieListAdapter(_nowPlayingList){
+            val bundle = bundleOf(MOVIE_ID to it.id, MOVIE_TITLE to it.title, MOVIE_POSTER to it.posterPath,
+                MOVIE_OVERVIEW to it.overview, MOVIE_RELEASE_DATE to it.releaseDate,
+                MOVIE_VOTE_AVERAGE to it.voteAverage, MOVIE_BACKDROP to it.backdropPath)
+            _view.findNavController().navigate(R.id.action_navigation_series_movies_to_movieDetailedFragment, bundle)
+        }
+
         _popularListAdapter = MovieListAdapter(_popularList){}
         _topRatedListAdapter = MovieListAdapter(_topRatedList){}
         _trendingListAdapter = MovieListAdapter(_trendingList){}
@@ -119,5 +117,15 @@ class MoviesSeriesFragment : Fragment() {
             //O COMANDO É ESTE ABAIXO, MAS NAO CONSEGUI LOCALIZAR A VIEW
             //findViewById<NavigationView>(R.id.navMenu).visibility = View.INVISIBLE
         }
+    }
+
+    companion object {
+        const val MOVIE_ID = "ID"
+        const val MOVIE_TITLE = "TITLE"
+        const val MOVIE_POSTER = "POSTER"
+        const val MOVIE_BACKDROP = "BACKDROP"
+        const val MOVIE_OVERVIEW = "OVERVIEW"
+        const val MOVIE_RELEASE_DATE = "RELEASE_DATE"
+        const val MOVIE_VOTE_AVERAGE = "VOTE_AVERAGE"
     }
 }
