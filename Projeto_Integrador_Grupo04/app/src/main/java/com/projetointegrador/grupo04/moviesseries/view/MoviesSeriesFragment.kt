@@ -5,12 +5,14 @@ import android.view.*
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.navigation.NavigationView
 import com.projetointegrador.grupo04.R
 import com.projetointegrador.grupo04.moviesseries.model.MovieModel
 import com.projetointegrador.grupo04.moviesseries.repository.MovieRepository
@@ -95,7 +97,6 @@ class MoviesSeriesFragment : Fragment() {
         applyList(_trendingListAdapter, trendingListRecycler, trendingManager)
         applyList(_upcomingListAdapter, upcomingListRecycler, upcomingManager)
 
-        setUserOptions()
     }
 
     private fun applyList(adapterMain: MovieListAdapter, recyclerView: RecyclerView, manager: LinearLayoutManager){
@@ -109,14 +110,6 @@ class MoviesSeriesFragment : Fragment() {
     private fun showResults(adapter: MovieListAdapter,list: MutableList<MovieModel>?, element: List<MovieModel>?) {
         element?.let { list?.addAll(it) }
         adapter.notifyDataSetChanged()
-    }
-
-    private fun setUserOptions() {
-        _view.findViewById<ImageView>(R.id.iconUserTab).setOnClickListener {
-            Toast.makeText(context,"Tentei abrir o menu aqui, mas não consegui achar a VIEW correta!",Toast.LENGTH_SHORT).show()
-            //O COMANDO É ESTE ABAIXO, MAS NAO CONSEGUI LOCALIZAR A VIEW
-            //findViewById<NavigationView>(R.id.navMenu).visibility = View.INVISIBLE
-        }
     }
 
     companion object {

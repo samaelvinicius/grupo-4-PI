@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".moviesseries.view.MovieDetailedFragment">
+    tools:context=".moviesseries.view.MovieDetailFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout2"
@@ -51,17 +51,6 @@
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
-                    android:id="@+id/tvDetailedVoteAverage"
-                    android:layout_width="@dimen/dim_35_dp"
-                    android:layout_height="@dimen/dim_35_dp"
-                    android:background="@drawable/shape_score"
-                    android:gravity="center"
-                    android:text="@string/media_score"
-                    android:textColor="@color/color_black"
-                    app:layout_constraintBottom_toBottomOf="@+id/ivDetailedPoster"
-                    app:layout_constraintEnd_toEndOf="@+id/ivDetailedPoster" />
-
-                <TextView
                     android:id="@+id/tvDetailedTitle"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
@@ -94,6 +83,7 @@
                 android:layout_height="?attr/actionBarSize"
                 app:title="@string/title_series_movies"
                 app:popupTheme="@style/AppTheme"
+                android:layout_marginTop="24dp"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
                 app:layout_collapseMode="pin">
 
@@ -102,21 +92,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_baseline_arrow_back_24"
-                    android:layout_marginStart="@dimen/dim_20_dp"
+                    android:layout_marginStart="@dimen/dim_10_dp"
                     android:layout_marginTop="@dimen/dim_10_dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/color_black" />
-
-                <ImageView
-                    android:id="@+id/iconUserTab"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:src="@drawable/ic_baseline_dehaze_48"
-                    app:layout_anchor="@+id/appBarLayout"
-                    app:layout_anchorGravity="end|center"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    app:tint="@color/colorPrimary" />
 
             </com.google.android.material.appbar.MaterialToolbar>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -186,4 +166,4 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

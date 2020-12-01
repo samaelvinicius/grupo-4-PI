@@ -3,21 +3,44 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_series_movies">
+    app:startDestination="@id/navigation_series_movies">
 
     <fragment
         android:id="@+id/navigation_series_movies"
         android:name="com.projetointegrador.grupo04.moviesseries.view.MoviesSeriesFragment"
+        android:label="@string/title_series_movies"
         tools:layout="@layout/fragment_series_movies">
         <action
             android:id="@+id/action_navigation_series_movies_to_movieDetailedFragment"
-            app:destination="@id/movieDetailedFragment" />
+            app:destination="@id/navigation_detail_movie"
+            app:enterAnim="@animator/nav_default_enter_anim"
+            app:exitAnim="@animator/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
 
     <fragment
-        android:id="@+id/movieDetailedFragment"
-        android:name="com.projetointegrador.grupo04.moviesseries.view.MovieDetailedFragment"
+        android:id="@+id/navigation_detail_movie"
+        android:name="com.projetointegrador.grupo04.moviesseries.view.MovieDetailFragment"
         android:label="fragment_movie_detailed"
         tools:layout="@layout/fragment_movie_detailed" />
+
+    <fragment
+        android:id="@+id/navigation_explore"
+        android:name="com.projetointegrador.grupo04.explore.view.ExploreFragment"
+        android:label="fragment_explore2"
+        tools:layout="@layout/fragment_explore2" />
+
+    <fragment
+        android:id="@+id/navigation_people"
+        android:name="com.projetointegrador.grupo04.people.view.PeopleFragment"
+        android:label="@string/title_people"
+        tools:layout="@layout/fragment_people" />
+
+    <fragment
+        android:id="@+id/navigation_network"
+        android:name="com.projetointegrador.grupo04.network.NetworkFragment"
+        android:label="@string/title_networks"
+        tools:layout="@layout/fragment_network" />
 
 </navigation>

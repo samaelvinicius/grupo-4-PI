@@ -1,29 +1,24 @@
 package com.projetointegrador.grupo04.moviesseries.view
 
+import android.os.Build
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.projetointegrador.grupo04.R
 import com.projetointegrador.grupo04.moviesseries.model.CastModel
-import com.projetointegrador.grupo04.moviesseries.model.MovieModel
 import com.projetointegrador.grupo04.moviesseries.repository.MovieRepository
 import com.projetointegrador.grupo04.moviesseries.viewmodel.CastListViewModel
-import com.projetointegrador.grupo04.moviesseries.viewmodel.MovieListViewModel
 import com.squareup.picasso.Picasso
 
-class MovieDetailedFragment : Fragment() {
+
+class MovieDetailFragment : Fragment() {
 
     lateinit var _viewModel: CastListViewModel
     lateinit var _view: View
@@ -38,6 +33,7 @@ class MovieDetailedFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _view = inflater.inflate(R.layout.fragment_movie_detailed, container, false)
+
         return _view
     }
 
@@ -64,7 +60,6 @@ class MovieDetailedFragment : Fragment() {
 
         setBackNavigation(_view)
         setMovieDetailedInformation(_view)
-        setUserOptions()
 
         _viewModel.getMovieCast(_movieId).observe(viewLifecycleOwner, {showResults(_castListAdapter, _castList, it)})
 
@@ -85,15 +80,6 @@ class MovieDetailedFragment : Fragment() {
         adapter.notifyDataSetChanged()
     }
 
-    private fun setUserOptions() {
-        _view.findViewById<ImageView>(R.id.iconUserTab).setOnClickListener {
-            Toast.makeText(context,"Tentei abrir o menu aqui, mas não consegui achar a VIEW correta!",
-                Toast.LENGTH_SHORT).show()
-            //O COMANDO É ESTE ABAIXO, MAS NAO CONSEGUI LOCALIZAR A VIEW
-            //findViewById<NavigationView>(R.id.navMenu).visibility = View.INVISIBLE
-        }
-    }
-
     private fun setMovieDetailedInformation(view: View) {
 
         _movieId = arguments?.getInt(MoviesSeriesFragment.MOVIE_ID)!!
@@ -102,13 +88,13 @@ class MovieDetailedFragment : Fragment() {
             MoviesSeriesFragment.MOVIE_TITLE
         )
 
-        view.findViewById<TextView>(R.id.tvDetailedOverview).text = arguments?.getString(
-            MoviesSeriesFragment.MOVIE_OVERVIEW
-        )
+//        view.findViewById<TextView>(R.id.tvDetailedOverview).text = arguments?.getString(
+//            MoviesSeriesFragment.MOVIE_OVERVIEW
+//        )
 
-        view.findViewById<TextView>(R.id.tvDetailedVoteAverage).text = arguments?.getDouble(
-            MoviesSeriesFragment.MOVIE_VOTE_AVERAGE
-        ).toString()
+//        view.findViewById<TextView>(R.id.tvDetailedVoteAverage).text = arguments?.getDouble(
+//            MoviesSeriesFragment.MOVIE_VOTE_AVERAGE
+//        ).toString()
 
         val posterImage = arguments?.getString(MoviesSeriesFragment.MOVIE_POSTER)
         if (posterImage != null) {
@@ -131,16 +117,6 @@ class MovieDetailedFragment : Fragment() {
             val navController = findNavController()
             navController.navigateUp()
         }
-    }
-
-    companion object {
-        const val MOVIE_ID = "ID"
-        const val MOVIE_TITLE = "TITLE"
-        const val MOVIE_POSTER = "POSTER"
-        const val MOVIE_BACKDROP = "BACKDROP"
-        const val MOVIE_OVERVIEW = "OVERVIEW"
-        const val MOVIE_RELEASE_DATE = "RELEASE_DATE"
-        const val MOVIE_VOTE_AVERAGE = "VOTE_AVERAGE"
     }
 
 }
