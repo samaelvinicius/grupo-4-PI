@@ -29,7 +29,7 @@
         android:id="@+id/navigation_explore"
         android:name="com.projetointegrador.grupo04.explore.view.ExploreFragment"
         android:label="fragment_explore2"
-        tools:layout="@layout/fragment_explore2" />
+        tools:layout="@layout/fragment_explore" />
 
     <fragment
         android:id="@+id/navigation_people"

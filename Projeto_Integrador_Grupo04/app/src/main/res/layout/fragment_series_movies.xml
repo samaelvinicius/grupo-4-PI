@@ -48,6 +48,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/rvMediaTrending"/>
 
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/swAiring"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Switch"
+            tools:layout_editor_absoluteX="133dp"
+            tools:layout_editor_absoluteY="305dp"
+            app:layout_constraintStart_toEndOf="@+id/tvMediaAiring"
+            app:layout_constraintBottom_toTopOf="@id/rvMediaAiring"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMediaAiring"
         android:layout_width="match_parent"
@@ -94,6 +104,7 @@
             android:layout_height="@dimen/dim_220_dp"
             tools:listitem="@layout/example_series_movies"
             app:layout_constraintTop_toBottomOf="@id/tvMediaUpcoming"/>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

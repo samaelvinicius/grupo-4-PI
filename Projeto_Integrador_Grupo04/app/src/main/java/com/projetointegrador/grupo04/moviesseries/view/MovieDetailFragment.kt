@@ -1,31 +1,36 @@
 package com.projetointegrador.grupo04.moviesseries.view
 
-import android.os.Build
+import android.content.Context
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager.widget.ViewPager
+import com.google.android.material.tabs.TabLayout
 import com.projetointegrador.grupo04.R
-import com.projetointegrador.grupo04.moviesseries.model.CastModel
 import com.projetointegrador.grupo04.moviesseries.repository.MovieRepository
-import com.projetointegrador.grupo04.moviesseries.viewmodel.CastListViewModel
+import com.projetointegrador.grupo04.moviesseries.view.MovieDetail.*
+import com.projetointegrador.grupo04.moviesseries.viewmodel.MovieDetailViewModel
 import com.squareup.picasso.Picasso
 
 
 class MovieDetailFragment : Fragment() {
 
-    lateinit var _viewModel: CastListViewModel
+    lateinit var _viewModel: MovieDetailViewModel
     lateinit var _view: View
 
-    private lateinit var _castListAdapter: CastListAdapter
-    private var _castList = mutableListOf<CastModel>()
-    private var _movieId: Int = 0
+    private lateinit var tabLayout: TabLayout
+    private lateinit var viewPager: ViewPager
+
+    var _movieId: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,6 +38,8 @@ class MovieDetailFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _view = inflater.inflate(R.layout.fragment_movie_detailed, container, false)
+
+        _movieId = arguments?.getInt(MoviesSeriesFragment.MOVIE_ID)!!
 
         return _view
     }
@@ -43,71 +50,34 @@ class MovieDetailFragment : Fragment() {
         _view = view
         _viewModel = ViewModelProvider(
             this,
-            CastListViewModel.CastListViewModelFactory(MovieRepository())
-        ).get(CastListViewModel::class.java)
+            MovieDetailViewModel.MovieDetailViewModelFactory(MovieRepository())
+        ).get(MovieDetailViewModel::class.java)
 
-        //Manager initialization
-        val castManager = LinearLayoutManager(view.context, LinearLayoutManager.HORIZONTAL, false)
-
-        //Recycler views identification
-        val castListRecycler = view.findViewById<RecyclerView>(R.id.rvDetailedCasting)
-
-        //Lists initialization
-        _castList = mutableListOf()
-
-        //Adapters initialization
-        _castListAdapter = CastListAdapter(_castList){}
+        viewPager = _view.findViewById(R.id.my_view_pager)
+        tabLayout = _view.findViewById(R.id.tabs)
+        viewPager.adapter = MyFragmentPagerAdapter(requireContext(), childFragmentManager)
+        tabLayout.setupWithViewPager(viewPager)
 
         setBackNavigation(_view)
-        setMovieDetailedInformation(_view)
 
-        _viewModel.getMovieCast(_movieId).observe(viewLifecycleOwner, {showResults(_castListAdapter, _castList, it)})
+        val movieTitle = _view.findViewById<TextView>(R.id.tvDetailedTitle)
+        val backdropImage = _view.findViewById<ImageView>(R.id.ivDetailedBackdrop)
+        val posterImage = _view.findViewById<ImageView>(R.id.ivDetailedPoster)
 
-        applyList(_castListAdapter, castListRecycler, castManager)
+        _viewModel.getMovieDetail(_movieId).observe(viewLifecycleOwner) {
+            movieTitle.text = it?.title
 
-    }
+            if (it?.posterPath != null) {
+                Picasso.get()
+                    .load("https://image.tmdb.org/t/p/w342${it?.posterPath}")
+                    .into(posterImage)
+            }
 
-    private fun applyList(adapterMain: CastListAdapter, recyclerView: RecyclerView, manager: LinearLayoutManager){
-        recyclerView.apply {
-            setHasFixedSize(true)
-            layoutManager = manager
-            adapter = adapterMain
-        }
-    }
-
-    private fun showResults(adapter: CastListAdapter, list: MutableList<CastModel>?, element: List<CastModel>?) {
-        element?.let { list?.addAll(it) }
-        adapter.notifyDataSetChanged()
-    }
-
-    private fun setMovieDetailedInformation(view: View) {
-
-        _movieId = arguments?.getInt(MoviesSeriesFragment.MOVIE_ID)!!
-
-        view.findViewById<TextView>(R.id.tvDetailedTitle).text = arguments?.getString(
-            MoviesSeriesFragment.MOVIE_TITLE
-        )
-
-//        view.findViewById<TextView>(R.id.tvDetailedOverview).text = arguments?.getString(
-//            MoviesSeriesFragment.MOVIE_OVERVIEW
-//        )
-
-//        view.findViewById<TextView>(R.id.tvDetailedVoteAverage).text = arguments?.getDouble(
-//            MoviesSeriesFragment.MOVIE_VOTE_AVERAGE
-//        ).toString()
-
-        val posterImage = arguments?.getString(MoviesSeriesFragment.MOVIE_POSTER)
-        if (posterImage != null) {
-            Picasso.get()
-                .load("https://image.tmdb.org/t/p/w342$posterImage")
-                .into(view.findViewById<ImageView>(R.id.ivDetailedPoster))
-        }
-
-        val backdropImage = arguments?.getString(MoviesSeriesFragment.MOVIE_BACKDROP)
-        if (backdropImage != null) {
-            Picasso.get()
-                .load("https://image.tmdb.org/t/p/w342$backdropImage")
-                .into(view.findViewById<ImageView>(R.id.ivDetailedBackdrop))
+            if (it?.backdropPath != null) {
+                Picasso.get()
+                    .load("https://image.tmdb.org/t/p/w342${it?.backdropPath}")
+                    .into(backdropImage)
+            }
         }
 
     }
@@ -117,6 +87,31 @@ class MovieDetailFragment : Fragment() {
             val navController = findNavController()
             navController.navigateUp()
         }
+    }
+
+    class MyFragmentPagerAdapter(
+        private val context: Context,
+        fragmentManager: FragmentManager
+    ) : FragmentPagerAdapter(fragmentManager) {
+        override fun getCount() = 3
+
+        override fun getItem(position: Int) = when(position) {
+            0 -> MovieAboutFragment()
+            1 -> MovieCastFragment()
+            2 -> MovieReviewFragment()
+            else -> throw IllegalStateException("Unexpected position $position")
+        }
+
+        override fun getPageTitle(position: Int): CharSequence = when(position) {
+            0 -> "Sobre"
+            1 -> "Elenco"//context.getString(R.string.second)
+            2 -> "Críticas"
+            else -> throw IllegalStateException("Unexpected position $position")
+        }
+    }
+
+    companion object {
+        const val MOVIE_OVERVIEW = "OVERVIEW"
     }
 
 }

@@ -13,6 +13,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.switchmaterial.SwitchMaterial
 import com.projetointegrador.grupo04.R
 import com.projetointegrador.grupo04.moviesseries.model.MovieModel
 import com.projetointegrador.grupo04.moviesseries.repository.MovieRepository
@@ -60,11 +61,13 @@ class MoviesSeriesFragment : Fragment() {
         val popularManager = LinearLayoutManager(view.context, LinearLayoutManager.HORIZONTAL, false)
         val nowPlayingManager = LinearLayoutManager(view.context, LinearLayoutManager.HORIZONTAL, false)
 
+        val switchNowPlaying = _view.findViewById<SwitchMaterial>(R.id.swAiring)
+
         //Recycler views identification
-        val nowPlayingListRecycler = view.findViewById<RecyclerView>(R.id.rvMediaAiring)
-        val popularListRecycler = view.findViewById<RecyclerView>(R.id.rvMediaPopular)
-        val trendingListRecycler = view.findViewById<RecyclerView>(R.id.rvMediaTrending)
-        val upcomingListRecycler = view.findViewById<RecyclerView>(R.id.rvMediaUpcoming)
+        val nowPlayingListRecycler = _view.findViewById<RecyclerView>(R.id.rvMediaAiring)
+        val popularListRecycler = _view.findViewById<RecyclerView>(R.id.rvMediaPopular)
+        val trendingListRecycler = _view.findViewById<RecyclerView>(R.id.rvMediaTrending)
+        val upcomingListRecycler = _view.findViewById<RecyclerView>(R.id.rvMediaUpcoming)
 
         //Lists initialization
         _latestList = mutableListOf()
@@ -76,9 +79,7 @@ class MoviesSeriesFragment : Fragment() {
 
         //Adapters initialization
         _nowPlayingListAdapter = MovieListAdapter(_nowPlayingList){
-            val bundle = bundleOf(MOVIE_ID to it.id, MOVIE_TITLE to it.title, MOVIE_POSTER to it.posterPath,
-                MOVIE_OVERVIEW to it.overview, MOVIE_RELEASE_DATE to it.releaseDate,
-                MOVIE_VOTE_AVERAGE to it.voteAverage, MOVIE_BACKDROP to it.backdropPath)
+            val bundle = bundleOf(MOVIE_ID to it.id)
             _view.findNavController().navigate(R.id.action_navigation_series_movies_to_movieDetailedFragment, bundle)
         }
 
@@ -87,7 +88,8 @@ class MoviesSeriesFragment : Fragment() {
         _trendingListAdapter = MovieListAdapter(_trendingList){}
         _upcomingListAdapter = MovieListAdapter(_upcomingList){}
 
-        _viewModel.getNowPlayingMovies().observe(viewLifecycleOwner, {showResults(_nowPlayingListAdapter, _nowPlayingList, it)})
+        val teste = _viewModel.getNowPlayingMovies()
+        teste.observe(viewLifecycleOwner, {showResults(_nowPlayingListAdapter, _nowPlayingList, it)})
         _viewModel.getPopularMovies().observe(viewLifecycleOwner, {showResults(_popularListAdapter, _popularList, it)})
         _viewModel.getTrendingMovies().observe(viewLifecycleOwner, {showResults(_trendingListAdapter,_trendingList, it)})
         _viewModel.getUpcomingMovies().observe(viewLifecycleOwner, {showResults(_upcomingListAdapter, _upcomingList, it)})
@@ -109,16 +111,12 @@ class MoviesSeriesFragment : Fragment() {
 
     private fun showResults(adapter: MovieListAdapter,list: MutableList<MovieModel>?, element: List<MovieModel>?) {
         element?.let { list?.addAll(it) }
+        element?.let {println(it)}
+
         adapter.notifyDataSetChanged()
     }
 
     companion object {
         const val MOVIE_ID = "ID"
-        const val MOVIE_TITLE = "TITLE"
-        const val MOVIE_POSTER = "POSTER"
-        const val MOVIE_BACKDROP = "BACKDROP"
-        const val MOVIE_OVERVIEW = "OVERVIEW"
-        const val MOVIE_RELEASE_DATE = "RELEASE_DATE"
-        const val MOVIE_VOTE_AVERAGE = "VOTE_AVERAGE"
     }
 }

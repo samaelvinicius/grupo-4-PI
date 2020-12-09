@@ -5,6 +5,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.projetointegrador.grupo04.R
+import com.projetointegrador.grupo04.moviesseries.model.GenreModel
 import com.projetointegrador.grupo04.moviesseries.model.MovieModel
 import com.squareup.picasso.Picasso
 
