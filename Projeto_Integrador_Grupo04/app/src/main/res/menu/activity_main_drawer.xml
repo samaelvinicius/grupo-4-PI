@@ -5,25 +5,21 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/navNovoUsuario"
-            android:icon="@drawable/ic_baseline_person_add_24"
-            android:title="@string/criar_conta" />
-        <item
-            android:id="@+id/navLoginConta"
+            android:id="@+id/navigation_login_fragment"
             android:icon="@drawable/ic_baseline_account_box_24"
             android:title="@string/acessar_conta" />
         <item
-            android:id="@+id/navLoginFacebook"
-            android:icon="@drawable/ic_baseline_thumb_up_24"
-            android:title="@string/acessar_facebook" />
-        <item
-            android:id="@+id/navLoginGoogle"
-            android:icon="@drawable/ic_baseline_g_translate_24"
-            android:title="@string/acessar_google" />
+            android:id="@+id/navigation_register_fragment"
+            android:icon="@drawable/ic_baseline_person_add_24"
+            android:title="@string/criar_conta" />
         <item
             android:id="@+id/navSobre"
             android:icon="@drawable/ic_baseline_local_movies_24"
             android:title="@string/sobre" />
+        <item
+            android:id="@+id/config"
+            android:icon="@drawable/ic_baseline_g_translate_24"
+            android:title="@string/config_text" />
         <item
             android:id="@+id/navLogout"
             android:icon="@drawable/ic_baseline_directions_walk_24"

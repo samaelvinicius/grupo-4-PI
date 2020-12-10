@@ -123,4 +123,5 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="genre_title">Gêneros</string>
+    <string name="config_text">Configurações...</string>
 </resources>

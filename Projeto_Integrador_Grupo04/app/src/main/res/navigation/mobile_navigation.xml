@@ -43,4 +43,15 @@
         android:label="@string/title_networks"
         tools:layout="@layout/fragment_network" />
 
+    <fragment
+        android:id="@+id/navigation_login_fragment"
+        android:name="com.projetointegrador.grupo04.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/navigation_register_fragment"
+        android:name="com.projetointegrador.grupo04.login.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" />
+
 </navigation>

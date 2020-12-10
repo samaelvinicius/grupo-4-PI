@@ -1,13 +1,24 @@
 package com.projetointegrador.grupo04
 
+import android.Manifest
+import android.app.Activity
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
+import android.view.Menu
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
@@ -20,10 +31,14 @@ import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 
+const val PERMISSIONS_REQUEST_CAMERA = 200
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navController: NavController
+    private lateinit var imgFotoUsuario: ImageView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +63,54 @@ class MainActivity : AppCompatActivity() {
 
         setMainWindowFlags()
 
+    }
+
+    //SOBRESCREVO A FUNCAO CREATEOPTIONSMENU PARA CONSEGUIR EXECUTAR ACOES EM CERTOS ELEMENTOS DO MENU (EXEMPLO: CAMERA)
+    override fun onCreateOptionsMenu(menu: Menu): Boolean
+    {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.activity_main_drawer, menu)
+        imgFotoUsuario = findViewById<ImageView>(R.id.imgFoto)
+        imgFotoUsuario.setOnClickListener { capturarFoto() }
+
+        return true
+    }
+
+    //SOBRESCREVO ONACTIVITYRESULT PARA SABER QUANDO USUARIO TIROU A FOTO (ESTA ROTINA É ASSINCRONA!)
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?)
+    {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK && requestCode == PERMISSIONS_REQUEST_CAMERA && data != null)
+        {
+            imgFotoUsuario.setImageBitmap(data.extras?.get("data") as Bitmap)
+            Toast.makeText(this, "ENTROU NO IF", Toast.LENGTH_LONG).show()
+        }
+        Toast.makeText(this, "SAINDO DA FUNCAO", Toast.LENGTH_LONG).show()
+    }
+
+    //SOBRESCREVO ONREQUESTPERMISSIONSRESULT PARA SABER SE USUARIO ME DEU ACESSO A CAMERA
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray)
+    {
+        when(requestCode)
+        {
+            PERMISSIONS_REQUEST_CAMERA -> if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) capturarFoto()
+        }
+    }
+
+    //E TODAS AS FUNCOES ACIMA APENAS PARA DISPARAR A CAMERA DO CELULAR
+    private fun capturarFoto()
+    {
+        Toast.makeText(this, "VAI TENTAR", Toast.LENGTH_LONG).show()
+
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)== PackageManager.PERMISSION_GRANTED)
+        {
+            val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            startActivityForResult(cameraIntent, PERMISSIONS_REQUEST_CAMERA)
+        }
+        else
+        {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), 200)
+        }
     }
 
     private fun visibilityNavElements(navController: NavController) {
