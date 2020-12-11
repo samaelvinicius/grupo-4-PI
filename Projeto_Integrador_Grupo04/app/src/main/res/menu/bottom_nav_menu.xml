@@ -7,7 +7,7 @@
         android:title="@string/title_series_movies" />
 
     <item
-        android:id="@+id/navigation_networks"
+        android:id="@+id/navigation_network"
         android:icon="@drawable/ic_baseline_tv_24"
         android:title="@string/title_networks" />
 

@@ -10,5 +10,6 @@ class MovieRepository {
     suspend fun getTopRatedMovies() = client.getTopRatedMovies()
     suspend fun getNowPlayingMovies() = client.getNowPlayingMovies()
     suspend fun getMovieCast(movieId: Int?) = movieId?.let { client.getMovieCast(it) }
+    suspend fun getMovieDetail(movieId: Int?) = movieId?.let { client.getMovieDetail(it) }
 
 }

@@ -20,10 +20,10 @@ class TelaInicialActivity : AppCompatActivity()
         //Exibe uma tela de progresso - TESTE
         //ProgressDialog.show(this, "Carregando", "Carregando, aguarde", true,false)
 
-        //Animacao logotipo - 2 segundos
+        //Animacao logotipo - 1 segundos
         findViewById<ImageView>(R.id.imgLogotipo).apply {
             alpha = 0f
-            animate().alpha(1f).duration = 2000
+            animate().alpha(1f).duration = 1000
         }
         //Animacao carga
         findViewById<ImageView>(R.id.imgCarregando) .apply {
@@ -35,10 +35,10 @@ class TelaInicialActivity : AppCompatActivity()
 
         }
 
-        //Aguarda 5 segundos para abrir a tela principal
+        //Aguarda 2 segundos para abrir a tela principal
         Handler(Looper.getMainLooper()).postDelayed({
             startActivity(Intent(this, MainActivity::class.java))
             finish()
-        }, 5000)
+        }, 2000)
     }
 }

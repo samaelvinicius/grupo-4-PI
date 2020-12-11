@@ -11,6 +11,12 @@ class MovieListViewModel(private val repository: MovieRepository): ViewModel() {
 
     private var _movies: List<MovieModel> = listOf()
 
+    fun getMovieDetail(movieId: Int?) = liveData(Dispatchers.IO) {
+        // Obtem dados da API
+        val response = repository.getMovieDetail(movieId)
+        emit(response)
+    }
+
     fun getPopularMovies() = liveData(Dispatchers.IO) {
         // Obtem dados da API
         val response = repository.getPopularMovies()

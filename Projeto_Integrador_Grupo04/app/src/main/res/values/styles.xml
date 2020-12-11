@@ -1,20 +1,17 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:statusBarColor">@color/color_white</item>
-        <item name="android:color">@color/colorPrimary</item>
-        <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
 
+        <item name="android:windowDrawsSystemBarBackgrounds">false</item>
+        <item name="android:windowLightStatusBar">true</item>
+
+        <item name="colorControlNormal">@color/colorPrimary</item>
         <item name="bottomNavigationStyle">@style/Widget.MaterialComponents.BottomNavigationView.Colored</item>
         <item name="colorOnPrimary">@color/color_white</item>
-    </style>
-
-    <style name="TransparentText" parent="@android:style/TextAppearance">
-        <item name="android:textColor">#00000000</item>
     </style>
 
     <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="@style/Theme.AppCompat.Light.NoActionBar">
