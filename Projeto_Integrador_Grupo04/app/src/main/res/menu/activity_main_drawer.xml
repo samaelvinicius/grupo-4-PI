@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/navigation_login_fragment"
+            android:icon="@drawable/ic_baseline_account_box_24"
+            android:title="@string/acessar_conta" />
+        <item
+            android:id="@+id/navigation_register_fragment"
+            android:icon="@drawable/ic_baseline_person_add_24"
+            android:title="@string/criar_conta" />
+        <item
+            android:id="@+id/sobreFragment"
+            android:icon="@drawable/ic_baseline_local_movies_24"
+            android:title="@string/sobre" />
+        <item
+            android:id="@+id/settingsFragment"
+            android:icon="@drawable/ic_baseline_g_translate_24"
+            android:title="@string/config_text" />
+        <item
+            android:id="@+id/navLogout"
+            android:icon="@drawable/ic_baseline_directions_walk_24"
+            android:title="@string/sair" />
+    </group>
+</menu>

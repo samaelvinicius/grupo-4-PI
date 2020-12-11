@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dim_120_dp"
+    android:layout_height="@dimen/dim_210_dp"
+    app:cardCornerRadius="@dimen/dim_15_dp"
+    android:layout_margin="@dimen/dim_5_dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clMediaCard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/ivCastPicture"
+            android:layout_width="@dimen/dim_100_dp"
+            android:layout_height="@dimen/dim_145_dp"
+            android:layout_marginTop="@dimen/dim_5_dp"
+            android:src="@drawable/cover_django"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvCastName"
+            android:layout_width="@dimen/dim_105_dp"
+            android:layout_height="@dimen/dim_48_dp"
+            android:gravity="top|center"
+            android:text="@string/media_name"
+            android:textColor="@color/color_black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivCastPicture" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
