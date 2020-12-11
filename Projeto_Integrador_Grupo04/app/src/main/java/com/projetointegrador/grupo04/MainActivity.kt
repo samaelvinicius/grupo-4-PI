@@ -14,6 +14,7 @@ import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -30,6 +31,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.switchmaterial.SwitchMaterial
 
 const val PERMISSIONS_REQUEST_CAMERA = 200
 
@@ -66,15 +68,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     //SOBRESCREVO A FUNCAO CREATEOPTIONSMENU PARA CONSEGUIR EXECUTAR ACOES EM CERTOS ELEMENTOS DO MENU (EXEMPLO: CAMERA)
-    override fun onCreateOptionsMenu(menu: Menu): Boolean
-    {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.activity_main_drawer, menu)
-        imgFotoUsuario = findViewById<ImageView>(R.id.imgFoto)
-        imgFotoUsuario.setOnClickListener { capturarFoto() }
-
-        return true
-    }
+//    override fun onCreateOptionsMenu(menu: Menu): Boolean
+//    {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        menuInflater.inflate(R.menu.activity_main_drawer, menu)
+//        imgFotoUsuario = findViewById<ImageView>(R.id.imgFoto)
+//        imgFotoUsuario.setOnClickListener { capturarFoto() }
+//
+//        return true
+//    }
 
     //SOBRESCREVO ONACTIVITYRESULT PARA SABER QUANDO USUARIO TIROU A FOTO (ESTA ROTINA É ASSINCRONA!)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?)
@@ -117,9 +119,28 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.navigation_detail_movie -> hideBothNavigation()
-                else -> showBothNavigation()
+                R.id.seriesDetailFragment -> hideBothNavigation()
+                R.id.navigation_people -> hideSwitch()
+                R.id.navigation_explore -> hideSwitch()
+                R.id.navigation_network -> hideSwitch()
+                R.id.navigation_series_movies -> {
+                    showBothNavigation()
+                    showSwitch()
+                }
             }
         }
+    }
+
+    private fun hideSwitch(){
+        findViewById<SwitchMaterial>(R.id.swAiring)?.visibility = View.GONE
+        findViewById<TextView>(R.id.tvSwitchMovies)?.visibility = View.GONE
+        findViewById<TextView>(R.id.tvSwitchSeries)?.visibility = View.GONE
+    }
+
+    private fun showSwitch(){
+        findViewById<SwitchMaterial>(R.id.swAiring)?.visibility = View.VISIBLE
+        findViewById<TextView>(R.id.tvSwitchMovies)?.visibility = View.VISIBLE
+        findViewById<TextView>(R.id.tvSwitchSeries)?.visibility = View.VISIBLE
     }
 
      private fun hideBothNavigation() { //Hide both drawer and bottom navigation bar

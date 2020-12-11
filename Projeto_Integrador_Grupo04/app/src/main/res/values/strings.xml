@@ -124,4 +124,9 @@
     </string>
     <string name="genre_title">Gêneros</string>
     <string name="config_text">Configurações...</string>
+    <string name="title_top_rated">Melhores avaliações</string>
+    <string name="title_vote_average">9.5</string>
+    <string name="title_release_date">20-12-2020</string>
+    <string name="media_score_count">1059</string>
+    <string name="title_runtime">152</string>
 </resources>

@@ -48,16 +48,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/rvMediaTrending"/>
 
-        <com.google.android.material.switchmaterial.SwitchMaterial
-            android:id="@+id/swAiring"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Switch"
-            tools:layout_editor_absoluteX="133dp"
-            tools:layout_editor_absoluteY="305dp"
-            app:layout_constraintStart_toEndOf="@+id/tvMediaAiring"
-            app:layout_constraintBottom_toTopOf="@id/rvMediaAiring"/>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMediaAiring"
         android:layout_width="match_parent"
@@ -86,10 +76,10 @@
         app:layout_constraintTop_toBottomOf="@id/tvMediaPopular"/>
 
         <TextView
-            android:id="@+id/tvMediaUpcoming"
+            android:id="@+id/tvMediaTopRated"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/title_upcoming"
+            android:text="@string/title_top_rated"
             android:textStyle="bold"
             android:textColor="@color/color_black"
             android:textSize="@dimen/dim_21_sp"
@@ -99,11 +89,11 @@
             app:layout_constraintTop_toBottomOf="@id/rvMediaPopular"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvMediaUpcoming"
+            android:id="@+id/rvMediaTopRated"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dim_220_dp"
             tools:listitem="@layout/example_series_movies"
-            app:layout_constraintTop_toBottomOf="@id/tvMediaUpcoming"/>
+            app:layout_constraintTop_toBottomOf="@id/tvMediaTopRated"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

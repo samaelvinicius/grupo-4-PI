@@ -1,4 +1,4 @@
-package com.projetointegrador.grupo04.moviesseries.view.MovieDetail
+package com.projetointegrador.grupo04.moviesseries.view.moviedetail
 
 import android.view.View
 import android.widget.ImageView

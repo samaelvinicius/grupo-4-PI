@@ -17,13 +17,26 @@
             app:exitAnim="@animator/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_navigation_series_movies_to_seriesDetailFragment"
+            app:destination="@id/seriesDetailFragment"
+            app:enterAnim="@animator/nav_default_enter_anim"
+            app:exitAnim="@animator/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
+
+    <fragment
+        android:id="@+id/seriesDetailFragment"
+        android:name="com.projetointegrador.grupo04.moviesseries.view.moviedetail.SerieDetailFragment"
+        android:label="fragment_series_detail"
+        tools:layout="@layout/fragment_serie_detail" />
 
     <fragment
         android:id="@+id/navigation_detail_movie"
         android:name="com.projetointegrador.grupo04.moviesseries.view.MovieDetailFragment"
         android:label="fragment_movie_detailed"
-        tools:layout="@layout/fragment_movie_detailed" />
+        tools:layout="@layout/fragment_movie_detail" />
 
     <fragment
         android:id="@+id/navigation_explore"
@@ -53,5 +66,14 @@
         android:name="com.projetointegrador.grupo04.login.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" />
+    <fragment
+        android:id="@+id/movieReviewFragment"
+        android:name="com.projetointegrador.grupo04.moviesseries.view.moviedetail.MovieRecommendationsFragment"
+        android:label="fragment_movie_review"
+        tools:layout="@layout/fragment_movie_review" >
+        <action
+            android:id="@+id/action_movieReviewFragment_to_navigation_detail_movie"
+            app:destination="@id/navigation_detail_movie" />
+    </fragment>
 
 </navigation>
