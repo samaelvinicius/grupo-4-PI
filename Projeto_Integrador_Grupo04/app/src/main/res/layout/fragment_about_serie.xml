@@ -114,49 +114,23 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <TextView
-                android:id="@+id/tvMovieBudgetIndex"
+                android:id="@+id/tvSerieSeasonsTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Orçamento"
+                android:text="Temporadas"
                 android:layout_gravity="center"/>
 
             <TextView
-                android:id="@+id/tvMovieBudget"
+                android:id="@+id/tvSerieSeasons"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Língua"
+                android:text="Temporada"
                 android:textSize="16sp"
                 android:layout_marginStart="@dimen/dim_20_dp"
                 android:layout_gravity="center"
                 android:textColor="@color/color_black"/>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/layoutInfo4"
-            android:layout_marginTop="@dimen/dim_5_dp"
-            app:layout_constraintTop_toBottomOf="@+id/layoutInfo3"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <TextView
-                android:id="@+id/tvMovieRevenueIndex"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Arrecadação"
-                android:layout_gravity="center"/>
-
-            <TextView
-                android:id="@+id/tvMovieRevenue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Língua"
-                android:textSize="16sp"
-                android:layout_marginStart="@dimen/dim_20_dp"
-                android:layout_gravity="center"
-                android:textColor="@color/color_black"/>
-        </LinearLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

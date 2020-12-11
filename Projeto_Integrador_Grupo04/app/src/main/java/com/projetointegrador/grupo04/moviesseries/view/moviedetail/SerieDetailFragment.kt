@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
+import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.tabs.TabLayout
 import com.projetointegrador.grupo04.R
 import com.projetointegrador.grupo04.explore.view.ExploreFragment
@@ -54,19 +55,27 @@ class SerieDetailFragment : Fragment() {
             MovieDetailViewModel.MovieDetailViewModelFactory(MediaRepository())
         ).get(MovieDetailViewModel::class.java)
 
-//        viewPager = _view.findViewById(R.id.my_view_pager)
-//        tabLayout = _view.findViewById(R.id.tabs)
-//        viewPager.adapter = MyFragmentPagerAdapter(requireContext(), childFragmentManager)
-//        tabLayout.setupWithViewPager(viewPager)
+        viewPager = _view.findViewById(R.id.my_view_pager)
+        tabLayout = _view.findViewById(R.id.tabs)
+        viewPager.adapter = MyFragmentPagerAdapter(requireContext(), childFragmentManager)
+        tabLayout.setupWithViewPager(viewPager)
 
         setBackNavigation(_view)
 
         val serieTitle = _view.findViewById<TextView>(R.id.tvDetailedTitle)
         val backdropImage = _view.findViewById<ImageView>(R.id.ivDetailedBackdrop)
         val posterImage = _view.findViewById<ImageView>(R.id.ivDetailedPoster)
+        val voteAverage = _view.findViewById<TextView>(R.id.tvMediaScore)
+        val releaseDate = _view.findViewById<TextView>(R.id.tvMediaReleaseDate)
+        val runtime = _view.findViewById<TextView>(R.id.tvMediaRuntime)
+        val voteCount = _view.findViewById<TextView>(R.id.tvVoteCount)
 
         _viewModel.getSerieDetail(_id).observe(viewLifecycleOwner) {
             serieTitle.text = it?.name
+            voteAverage.text = it?.voteAverage.toString()
+            voteCount.text = it?.voteCount.toString()
+
+            _view.findViewById<CollapsingToolbarLayout>(R.id.collapsing_toolbar).setTitle(serieTitle.text)
 
             if (it?.posterPath != null) {
                 Picasso.get()
@@ -90,23 +99,23 @@ class SerieDetailFragment : Fragment() {
         }
     }
 //
-//    class MyFragmentPagerAdapter(
-//        private val context: Context,
-//        fragmentManager: FragmentManager
-//    ) : FragmentPagerAdapter(fragmentManager) {
-//        override fun getCount() = 2
-//
-//        override fun getItem(position: Int) = when(position) {
-//            0 -> SerieAboutFragment()
-//            1 -> SerieCastFragment()
-//            else -> throw IllegalStateException("Unexpected position $position")
-//        }
-//
-//        override fun getPageTitle(position: Int): CharSequence = when(position) {
-//            0 -> "Sobre"
-//            1 -> "Elenco"//context.getString(R.string.second)
-//            else -> throw IllegalStateException("Unexpected position $position")
-//        }
-//    }
+    class MyFragmentPagerAdapter(
+        private val context: Context,
+        fragmentManager: FragmentManager
+    ) : FragmentPagerAdapter(fragmentManager) {
+        override fun getCount() = 2
+
+        override fun getItem(position: Int) = when(position) {
+            0 -> SerieAboutFragment()
+            1 -> SerieCastFragment()
+            else -> throw IllegalStateException("Unexpected position $position")
+        }
+
+        override fun getPageTitle(position: Int): CharSequence = when(position) {
+            0 -> "Sobre"
+            1 -> "Elenco"//context.getString(R.string.second)
+            else -> throw IllegalStateException("Unexpected position $position")
+        }
+    }
 
 }

@@ -31,7 +31,7 @@ class SerieAboutFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _view = inflater.inflate(R.layout.fragment_about_movie, container, false)
+        _view = inflater.inflate(R.layout.fragment_about_serie, container, false)
 
         return _view
     }
@@ -51,16 +51,14 @@ class SerieAboutFragment : Fragment() {
 
         val movieOverview = _view.findViewById<TextView>(R.id.tvMovieOverview)
         val originalLanguage = _view.findViewById<TextView>(R.id.tvMovieOriginalLanguage)
-        val originalTitle = _view.findViewById<TextView>(R.id.tvMovieOriginalTitle)
-        val budget = _view.findViewById<TextView>(R.id.tvMovieBudget)
-        val revenue = _view.findViewById<TextView>(R.id.tvMovieRevenue)
+        val originalName = _view.findViewById<TextView>(R.id.tvMovieOriginalTitle)
+        val numberOfSeasons = _view.findViewById<TextView>(R.id.tvSerieSeasons)
 
-        _viewModel.getMovieDetail(_movieId).observe(viewLifecycleOwner) {
+        _viewModel.getSerieDetail(_movieId).observe(viewLifecycleOwner) {
             movieOverview.text = it?.overview
             originalLanguage.text = it?.originalLanguage
-            originalTitle.text = it?.originalTitle
-            budget.text = "$ ${it?.budget.toString()}"
-            revenue.text = "$ ${it?.revenue.toString()}"
+            originalName.text = it?.originalName
+            numberOfSeasons.text = it?.numberOfSeasons.toString()
             createGenreChips(it!!.genres)
         }
 

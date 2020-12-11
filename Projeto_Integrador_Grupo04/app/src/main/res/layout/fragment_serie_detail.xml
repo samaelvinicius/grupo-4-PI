@@ -10,14 +10,13 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout2"
         android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_width="match_parent">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
             android:layout_height="300dp"
+            android:fitsSystemWindows="true"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:expandedTitleTextAppearance="@style/CollapsingToolbar.Expanded.Text"
             app:contentScrim="@color/color_white"
@@ -31,6 +30,7 @@
                 android:layout_height="200dp"
                 android:scaleType="centerCrop"
                 app:layout_collapseMode="parallax"
+                android:fitsSystemWindows="true"
                 android:src="@drawable/cover_django" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -46,24 +46,104 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/cover_django"
                     app:layout_collapseMode="parallax"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/linearLayout2"
                     app:layout_constraintStart_toStartOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayout2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="5dp">
+
+                        <TextView
+                            android:id="@+id/tvVoteCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/media_score_count"
+                            android:textColor="@color/color_black"
+                            android:textSize="14sp"
+                            android:layout_gravity="center"
+                            app:layout_constraintBottom_toBottomOf="parent"/>
+
+                        <ImageView
+                            android:id="@+id/ivVoteCount"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            app:tint="@color/colorPrimary"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_baseline_how_to_vote_24"/>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvMediaScore"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="10dp"
+                        android:background="@drawable/shape_score"
+                        android:gravity="center"
+                        android:text="@string/media_score"
+                        android:textColor="@color/color_black"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginTop="2dp"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/tvDetailedTitle"
-                    android:layout_width="300dp"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
                     android:gravity="center|left"
                     android:lines="2"
                     android:text="@string/title_series_movies"
                     android:textColor="@color/color_black"
                     android:textSize="20sp"
                     android:textStyle="bold"
+                    android:layout_marginTop="200dp"
+                    app:layout_constraintStart_toEndOf="@+id/ivDetailedPoster"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toEndOf="@id/ivDetailedPoster"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/ivDetailedPoster" />
+                    android:layout_marginBottom="10dp">
 
+                    <ImageView
+                        android:id="@+id/ivWatchlist"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="161dp"
+                        app:tint="@color/colorPrimary"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_baseline_bookmark_border_24"/>
 
+                    <ImageView
+                        android:id="@+id/ivFavorite"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="10dp"
+                        app:tint="@color/colorPrimary"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_baseline_favorite_border_24"/>
 
+                </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -87,7 +167,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:tint="@color/colorPrimary" />
-
             </com.google.android.material.appbar.MaterialToolbar>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
